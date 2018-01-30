@@ -7,4 +7,25 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+
+
+  agentsActive = false;
+  pcActive = false;
+  maxSatActive = false;
+  resultsActive = false;
+  
+  toggleHeaders(subPage : string) : void {
+    this.falseHeaders();
+    switch(subPage){
+      case 'agents': this.agentsActive = true; break;
+      case 'pc': this.pcActive = true; break; 
+      case 'maxSat': this.maxSatActive = true; break; 
+      case 'results': this.resultsActive = true; break; 
+       
+    }
+  }
+
+  falseHeaders() : void {
+    this.agentsActive = this.pcActive = this.maxSatActive = this.resultsActive = false;
+  }
 }

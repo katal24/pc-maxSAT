@@ -1,0 +1,91 @@
+<div class="main-container centr">
+    <div class="row">
+        <div class="col-md-3 col-sm-1 col-xs-0"></div>
+        <div class="col-md-6 col-sm-10 col-xs-12 text-center">
+            <h3>Choose type of comparison</h3>
+            <table class="table table-compact">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Let me compare</th>
+                        <th>Smaller is better</th>
+                        <th>Bigger is better</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- <div> -->
+                    <tr *ngFor="let attribute of agentService.attributes">
+                        <th class="text-center middle">
+                            {{attribute.name}}
+                        </th>
+                        <td>
+                            <clr-checkbox [(ngModel)]="attribute.type[0]" (click)="setType(attribute, 0)"></clr-checkbox>
+                        </td>
+                        <td>
+                            <clr-checkbox [(ngModel)]="attribute.type[1]" (click)="setType(attribute, 1)"></clr-checkbox>
+                        </td>
+                        <td>
+                            <clr-checkbox [(ngModel)]="attribute.type[2]" (click)="setType(attribute, 2)"></clr-checkbox>
+                        </td>
+                    </tr>
+                    <!-- </div> -->
+                </tbody>
+            </table>
+
+            <div class="col-md-3 col-sm-10 col-xs-12 "></div>
+        </div>
+        <div class="col-md-1 col-sm-1 col-xs-0"></div>
+    </div>
+    <button class="btn btn-success" (click)="finishComparisonType()"><clr-icon shape="event"></clr-icon> Finish</button>
+    <clr-wizard #wizardlg [(clrWizardOpen)]="lgOpen" clrWizardSize="lg" *ngIf="lgOpen" (clrWizardOnFinish)="countAhp()">
+        <clr-wizard-title>Pairwise comparisons</clr-wizard-title>
+
+        <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
+        <clr-wizard-button [type]="'previous'">Back</clr-wizard-button>
+        <clr-wizard-button [type]="'next'">Next</clr-wizard-button>
+        <clr-wizard-button [type]="'finish'" (click)="showMatrixes()">Finish</clr-wizard-button>
+
+        <clr-wizard-page>
+            <ng-template clrPageTitle>Attributes</ng-template>
+            <div *ngFor="let attr1 of agentService.attributes; let i1 = index">
+                <div *ngFor="let attr2 of agentService.attributes; let i2 = index">
+                    <div *ngIf="i1<i2">
+                        <div class="row">
+                            <h4 class="col-md-4 text-left">{{attr1.name}} </h4>
+                            <p class="col-md-4 text-center">{{mainMatrix[i1][i2]}}</p>
+                            <h4 class="col-md-4 text-right">{{attr2.name}}</h4>
+                        </div>
+                        <div class='well'>
+                            <div id="slidecontainer">
+                                <input type="range" [(ngModel)]="mainMatrix[i1][i2]" min="-8" max="8" value="0" class="slider" id="myRange">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </clr-wizard-page>
+
+        <clr-wizard-page *ngFor="let attr of agentService.attributes | onlyToCompare">
+            <div *ngFor="let data1 of agentService.agents; let i1 = index">
+                <div *ngFor="let data2 of agentService.agents; let i2 = index">
+                    <div *ngIf="i1<i2">
+                        <div class="row">
+                            <h4 class="col-md-4 text-left"> {{data1.values[agentService.attributes.indexOf(attr)]}} </h4>
+                            <p class="col-md-4 text-center">{{matrixes[agentService.attributes.indexOf(attr)][i1][i2]}}</p>
+                            <h4 class="col-md-4 text-right">{{data2.values[agentService.attributes.indexOf(attr)]}}</h4>
+                        </div>
+                        <div class='well'>
+                            <div id="slidecontainer">
+                                <input type="range" [(ngModel)]="matrixes[agentService.attributes.indexOf(attr)][i1][i2]" min="-8" max="8" value="0" class="slider" id="myRange">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <ng-template clrPageTitle>{{attr.name}}</ng-template>
+
+        </clr-wizard-page>
+
+    </clr-wizard>
+
+</div>

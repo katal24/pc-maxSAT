@@ -1,0 +1,55 @@
+<div class="main-container text-center">
+    <h2>Wyniki</h2>
+    <!--<div class="content-area text-center">
+        <h3>Na podstawie metody PC</h3><br/>
+        <ul class="list">
+            <li *ngFor="let agent of agentService.agents; let i=index">
+                <h4> {{resultService.psResults[i].name}} <a class="nav-link"><span class="nav-text">{{resultService.psResults[i].value*100}}%</span></a></h4>
+            </li>
+        </ul>
+    </div>-->
+
+
+    <div class="row text-center">
+        <div class="col-md-6 col-sm-6 col-xs-12">
+
+            <h3>Na podstawie metody PC</h3><br/>
+            <div class="row">
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                </div>
+                <div class="col-md-6 col-sm-3 col-xs-12" *ngIf="resultService.psResults.length">
+                    <div class="text-left">
+                        <ol class="list">
+                            <li *ngFor="let agent of resultService.psResults | sortByResult; let i=index">
+                                <h4> {{resultService.psResults[i].name}} <a class="nav-link"><span class="nav-text">{{resultService.psResults[i].value*100 | number : '1.2-2'}}%</span></a></h4>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-12">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <h3>Na podstawie metody PC</h3>
+            <h4>Maksymalna ilość punktów: {{agentService.attributes.length}}</h4>
+            <div class="row">
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                </div>
+                <div class="col-md-6 col-sm-3 col-xs-12" *ngIf="resultService.satResults.length">
+                    <div class="text-left">
+
+                        <ol class="list">
+                            <li *ngFor="let agent of resultService.satResults | sortByResult; let i=index">
+                                <h4> {{resultService.satResults[i].name}} <a class="nav-link"><span class="nav-text">{{resultService.satResults[i].value}}</span></a></h4>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-12">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

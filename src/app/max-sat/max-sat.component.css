@@ -1,0 +1,18 @@
+.middle {
+    vertical-align: middle;
+}
+
+.bottom {
+    vertical-align: bottom;
+}
+
+.btn {
+    width: 150px;
+    display: block;
+    width: 100px;
+    margin: 0 auto;
+}
+
+.centr {
+    text-align: center;
+}

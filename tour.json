@@ -1,0 +1,196 @@
+{
+    "_id": "12371a24e48d3a53e3abd7f842024ff3",
+    "_rev": "7-1c42b6c05267393fa91e5113cc95a44b",
+    "type": "tour",
+    "name": "Wyjazd służbowy W20",
+    "description": "Podróż po południowej Europie",
+    "buckets": [{
+            "value": 100,
+            "exchange": 4.5,
+            "currency": "EUR",
+            "owner": "Dawid Talaga"
+        },
+        {
+            "value": 100,
+            "exchange": 4.5,
+            "currency": "EUR",
+            "owner": "Joanna Skorupa"
+        },
+        {
+            "value": 1000,
+            "exchange": 0.5,
+            "currency": "HRK",
+            "owner": "Dawid Talaga"
+        },
+        {
+            "value": 200,
+            "exchange": 4,
+            "currency": "EUR",
+            "owner": "Michał Kolbusz"
+        },
+        {
+            "value": 300,
+            "exchange": 0.55,
+            "currency": "HRK",
+            "owner": "Krzystof Wacławik"
+        }
+    ],
+    "bills": [{
+            "name": "Pizza w Rzymie",
+            "description": "Wieczorem pierwszego dnia z powodu głowu",
+            "currency": "EUR",
+            "sum": 126,
+            "participationType": "simple",
+            "users": [{
+                    "name": "Dawid Talaga",
+                    "participatesEqually": "false",
+                    "actions": [{
+                            "type": "payment",
+                            "amount": 46
+                        },
+                        {
+                            "type": "usage",
+                            "amount": 25
+                        }
+                    ]
+                },
+                {
+                    "name": "Joanna Skorupa",
+                    "participatesEqually": "false",
+                    "actions": [{
+                            "type": "payment",
+                            "amount": 10
+                        },
+                        {
+                            "type": "usage",
+                            "amount": 30
+                        },
+                        {
+                            "type": "usage",
+                            "amount": 15.5
+                        }
+                    ]
+                },
+                {
+                    "name": "Krzysztof Wacławik",
+                    "participatesEqually": "false",
+                    "actions": [{
+                            "type": "payment",
+                            "amount": 60
+                        },
+                        {
+                            "type": "usage",
+                            "amount": 25
+                        }
+                    ]
+                },
+                {
+                    "name": "Michał Kolbusz",
+                    "participatesEqually": "false",
+                    "actions": [{
+                            "type": "payment",
+                            "amount": 10
+                        },
+                        {
+                            "type": "usage",
+                            "amount": 30.5
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Pizza w Zagrzebie",
+            "description": "Rano drugiego dnia z powodu głowu",
+            "currency": "HRK",
+            "sum": 126,
+            "participationType": "equally",
+            "users": [{
+                    "name": "Joanna Skorupa",
+                    "participatesEqually": "true",
+                    "actions": [{
+                            "type": "payment",
+                            "amount": 45.5
+                        },
+                        {
+                            "type": "usage",
+                            "amount": 30
+                        },
+                        {
+                            "type": "usage",
+                            "amount": 15.5
+                        }
+                    ]
+                },
+                {
+                    "name": "Krzysztof Wacławik",
+                    "participatesEqually": "true",
+                    "actions": [{
+                        "type": "usage",
+                        "amount": 25
+                    }]
+                },
+                {
+                    "name": "Michał Kolbusz",
+                    "participatesEqually": "false",
+                    "actions": [{
+                        "type": "payment",
+                        "amount": 25
+                    }]
+                }
+            ]
+        },
+        {
+            "name": "Pizza w Krakowie",
+            "description": "Ostatniego dnia z powodu głowu",
+            "currency": "PLN",
+            "sum": 126,
+            "participationType": "equally",
+            "users": [{
+                    "name": "Dawid Talaga",
+                    "participatesEqually": "true",
+                    "actions": [{
+                            "type": "payment",
+                            "amount": 0
+                        },
+                        {
+                            "type": "usage",
+                            "amount": 25
+                        }
+                    ]
+                },
+                {
+                    "name": "Joanna Skorupa",
+                    "participatesEqually": "true",
+                    "actions": [{
+                            "type": "payment",
+                            "amount": 35
+                        },
+                        {
+                            "type": "usage",
+                            "amount": 10
+                        }
+                    ]
+                },
+                {
+                    "name": "Krzysztof Wacławik",
+                    "participatesEqually": "true",
+                    "actions": [{
+                            "type": "payment",
+                            "amount": 5
+                        },
+                        {
+                            "type": "usage",
+                            "amount": 5
+                        }
+                    ]
+                },
+                {
+                    "name": "Michał Kolbusz",
+                    "participatesEqually": "true",
+                    "actions": []
+                }
+            ]
+        }
+    ]
+}

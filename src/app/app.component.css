@@ -1,0 +1,36 @@
+.header-btn {
+    border: none;
+    min-width: 4rem;
+    font-size: .6rem;
+    height: 1.8rem;
+    font-weight: 800;
+    color: #007cbb;
+    cursor: pointer;
+    border-radius: 0;
+}
+
+
+/* .nav-text {
+    padding: 0 .5rem !important;
+} */
+
+.nav-link {
+    /* opacity: .9 !important; */
+    min-width: 4rem;
+    text-align: center;
+}
+
+.btn-default.active {
+    background-color: hsla(0, 0%, 100%, .12);
+    color: #fafafa;
+}
+
+.btn-default:hover {
+    background-color: hsla(0, 0%, 100%, 0);
+    color: #fafafa;
+}
+
+.btn-default.active:focus {
+    background-color: hsla(0, 0%, 100%, .12);
+    color: #fafafa;
+}

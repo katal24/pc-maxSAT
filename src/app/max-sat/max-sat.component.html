@@ -1,0 +1,44 @@
+<div class="main-container centr">
+    <div class="row">
+        <div class="col-md-2 col-sm-1 col-xs-0"></div>
+        <div class="col-md-8 col-sm-10 col-xs-12 text-center">
+            <h3>Specify attributes of perfect agent</h3>
+            <table class="table table-compact">
+                <thead>
+                    <tr>
+                        <th>Attribute</th>
+                        <th>Smaller than ...</th>
+                        <th>Bigger than ...</th>
+                        <th>Equals ...</th>
+                        <th>Value to compare</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- <div> -->
+                    <tr *ngFor="let attribute of agentService.attributes">
+                        <th class="middle">
+                            {{attribute.name}}
+                        </th>
+                        <td>
+                            <clr-checkbox [(ngModel)]="attribute.comparisonType[0]" (click)="setTypeOfComparison(attribute, 0)"></clr-checkbox>
+                        </td>
+                        <td>
+                            <clr-checkbox [(ngModel)]="attribute.comparisonType[1]" (click)="setTypeOfComparison(attribute, 1)"></clr-checkbox>
+                        </td>
+                        <td>
+                            <clr-checkbox [(ngModel)]="attribute.comparisonType[2]" (click)="setTypeOfComparison(attribute, 2)"></clr-checkbox>
+                        </td>
+                        <td class="middle">
+                            <input type="text" [(ngModel)]="attribute.perfectValue" required size="10">
+                        </td>
+                    </tr>
+                    <!-- </div> -->
+                </tbody>
+            </table>
+
+            <div class="col-md-2 col-sm-10 col-xs-12 "></div>
+        </div>
+        <div class="col-md-1 col-sm-1 col-xs-0"></div>
+    </div>
+    <button class="btn btn-success" (click)="countTheBest()"><clr-icon shape="event"></clr-icon> Finish</button>
+</div>
