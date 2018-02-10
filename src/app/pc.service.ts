@@ -8,7 +8,7 @@ import { PcResult } from './pcResult';
 export class PcService {
 
   constructor(private http: HttpClient) { }
-  serverAddress: string = "http://localhost:8080/function";
+  serverAddress: string = "http://localhost:8080/pc";
 
   ahp(mainMatrix: number[][], matrixes: any[]): Observable<PcResult> {
     let oneMatrix = this.buildOneMatrix(mainMatrix, matrixes);

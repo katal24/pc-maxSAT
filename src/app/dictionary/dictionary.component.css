@@ -1,0 +1,19 @@
+.source-area {
+    width: 200px;
+}
+
+.centr {
+    text-align: center;
+}
+
+.topmargin {
+    margin-top: 20px;
+}
+
+.topmargin-big {
+    margin-top: 100px;
+}
+
+.leftpadding {
+    padding-left: 50px;
+}

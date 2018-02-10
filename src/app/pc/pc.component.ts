@@ -34,6 +34,7 @@ export class PcComponent implements OnInit {
     attribute.type[nr] = true;
   }
  
+ 
   finishComparisonType() :void {
     this.comparisons = true;
     this.lgOpen = false;

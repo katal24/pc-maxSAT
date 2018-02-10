@@ -9,7 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { routes } from './app-routing.module';
 
 import { AppComponent } from './app.component';
-import { HelpComponent } from './help/help.component';
+import { DictionaryComponent } from './dictionary/dictionary.component';
 import { AgentsComponent } from './agents/agents.component';
 import { PcComponent } from './pc/pc.component';
 import { MaxSatComponent } from './max-sat/max-sat.component';
@@ -22,12 +22,13 @@ import { SortByResultPipe } from './results/results.component';
 import { AgentService } from './agent.service';
 import { PcService } from './pc.service';
 import { ResultService } from './result.service';
+import { DictionaryService } from './dictionary.service';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HelpComponent,
+    DictionaryComponent,
     AgentsComponent,
     PcComponent,
     MaxSatComponent,
@@ -48,7 +49,8 @@ import { ResultService } from './result.service';
   providers: [
     AgentService,
     PcService,
-    ResultService
+    ResultService,
+    DictionaryService
   ],
   bootstrap: [AppComponent]
 })

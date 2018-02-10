@@ -1,0 +1,28 @@
+<div class="main-container centr">
+    <div class="row">
+        <div class="col-md-2 col-sm-1 col-xs-0"></div>
+        <div class="col-md-8 col-sm-10 col-xs-12 text-center">
+            <h3>Define dictionary</h3>
+            <h4>These words will be used to specify agents' parameters</h4>
+            <form #form="ngForm" enctype="multipart/form-data">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-xs-12 text-center">
+                        <div class="centr">
+                            <h5>type manually</h5>
+                            <textarea id="source" rows="15" class="source-area topmargin" [(ngModel)]="dictionaryService.source" name="source"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-12 text-center">
+                        <div class="centr">
+                            <h5>or load from a file</h5>
+                            <div class="topmargin-big">
+                                <input class="leftpadding" type="file" id="configFile" name="configFile" />
+                                <button class="btn btn-primary" (click)="loadConfigFile()">LOAD</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="col-md-2 col-sm-1 col-xs-0"></div>
+        </div>
+    </div>
