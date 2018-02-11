@@ -24,7 +24,7 @@
 
         <div class="col-md-6 col-sm-6 col-xs-12">
             <h3>Based on the MaxSAT problem</h3>
-            <h4>Maximum number of points: {{agentService.attributes.length}}</h4>
+            <h4 *ngIf="agentService.attributes">Maximum number of points: {{agentService.attributes.length}}</h4>
             <div class="row">
                 <div class="col-md-3 col-sm-6 col-xs-12">
                 </div>

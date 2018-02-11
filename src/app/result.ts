@@ -1,6 +1,9 @@
 export class Result {
+  error: string;
+  type: string;
+  values: number[];
+  value: number
   name: string;
-  value: number;
 
   constructor(name: string, value: number) {
     this.name = name;

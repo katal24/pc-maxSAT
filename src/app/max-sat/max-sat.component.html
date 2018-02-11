@@ -1,16 +1,16 @@
 <div class="main-container centr">
     <div class="row">
         <div class="col-md-2 col-sm-1 col-xs-0"></div>
-        <div class="col-md-8 col-sm-10 col-xs-12 text-center">
+        <div class="col-md-5 col-sm-10 col-xs-12 text-center">
             <h3>Specify attributes of perfect agent</h3>
             <table class="table table-compact">
                 <thead>
                     <tr>
                         <th>Attribute</th>
-                        <th>Smaller than ...</th>
-                        <th>Bigger than ...</th>
-                        <th>Equals ...</th>
-                        <th>Value to compare</th>
+                        <!--<th>Smaller than ...</th>
+                        <th>Bigger than ...</th>-->
+                        <!--<th>Equals ...</th>-->
+                        <th>Values (separator ;)</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -19,7 +19,7 @@
                         <th class="middle">
                             {{attribute.name}}
                         </th>
-                        <td>
+                        <!--<td>
                             <clr-checkbox [(ngModel)]="attribute.comparisonType[0]" (click)="setTypeOfComparison(attribute, 0)"></clr-checkbox>
                         </td>
                         <td>
@@ -27,18 +27,25 @@
                         </td>
                         <td>
                             <clr-checkbox [(ngModel)]="attribute.comparisonType[2]" (click)="setTypeOfComparison(attribute, 2)"></clr-checkbox>
-                        </td>
+                        </td>-->
                         <td class="middle">
-                            <input type="text" [(ngModel)]="attribute.perfectValue" required size="10">
+                            <input type="text" [(ngModel)]="attribute.perfectValue" required size="30">
                         </td>
                     </tr>
                     <!-- </div> -->
                 </tbody>
             </table>
-
-            <div class="col-md-2 col-sm-10 col-xs-12 "></div>
         </div>
-        <div class="col-md-1 col-sm-1 col-xs-0"></div>
-    </div>
+
+        <div class="col-md-1 col-sm-12 col-xs-12 text-center"></div>
+        <div class="col-md-2 col-sm-6 col-xs-12 text-center">
+            <div class="centr">
+                <h5>Dictionary</h5>
+                <textarea disabled id="sourcedis" rows="15" class="source-area topmargin" [(ngModel)]="dictionaryService.source" name="source"></textarea>
+            </div>
+        </div>
+
+        <div class="col-md-2 col-sm-1 col-xs-0"></div>
+    </div><br/>
     <button class="btn btn-success" (click)="countTheBest()"><clr-icon shape="event"></clr-icon> Finish</button>
 </div>

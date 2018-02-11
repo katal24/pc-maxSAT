@@ -21,6 +21,7 @@ import { SortByResultPipe } from './results/results.component';
 
 import { AgentService } from './agent.service';
 import { PcService } from './pc.service';
+import { MaxsatService } from './maxsat.service';
 import { ResultService } from './result.service';
 import { DictionaryService } from './dictionary.service';
 
@@ -49,6 +50,7 @@ import { DictionaryService } from './dictionary.service';
   providers: [
     AgentService,
     PcService,
+    MaxsatService,
     ResultService,
     DictionaryService
   ],

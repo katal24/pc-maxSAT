@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/operator/map'
-import { PcResult } from './pcResult';
+import { Result } from './result';
 
 @Injectable()
 export class PcService {
@@ -10,9 +10,9 @@ export class PcService {
   constructor(private http: HttpClient) { }
   serverAddress: string = "http://localhost:8080/pc";
 
-  ahp(mainMatrix: number[][], matrixes: any[]): Observable<PcResult> {
+  ahp(mainMatrix: number[][], matrixes: any[]): Observable<Result> {
     let oneMatrix = this.buildOneMatrix(mainMatrix, matrixes);
-    return this.http.post<PcResult>(this.serverAddress, {"name": "ahp", "matrix": oneMatrix});
+    return this.http.post<Result>(this.serverAddress, {"name": "ahp", "matrix": oneMatrix});
   }
 
   buildOneMatrix(mainMatrix: number[][], matrixes: any[]) : number[][] {

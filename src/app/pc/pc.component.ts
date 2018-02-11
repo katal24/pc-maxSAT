@@ -4,8 +4,8 @@ import { AgentService } from '../agent.service';
 import { PcService } from '../pc.service';
 import { ResultService } from '../result.service';
 import { Attribut } from '../attribut';
-import { PcResult } from '../pcResult';
 import { Result } from '../result';
+// import { Result } from '../result';
 
 declare var jquery: any;
 declare var $: any;
@@ -23,7 +23,7 @@ export class PcComponent implements OnInit {
   mainMatrix :number[][];
   matrixes : any[];
   comparisons : boolean = false;
-  constructor(private agentService: AgentService, private pcService: PcService, private resultService: ResultService) {
+  constructor(public agentService: AgentService, private pcService: PcService, private resultService: ResultService) {
    
   }
 

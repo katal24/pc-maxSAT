@@ -10,7 +10,7 @@ import { Attribut} from '../attribut';
 export class AgentsComponent implements OnInit {
 
   attributes : string[];
-  constructor(private agentService: AgentService ) { 
+  constructor(public agentService: AgentService ) { 
     // this.addAttribute();
   }
 

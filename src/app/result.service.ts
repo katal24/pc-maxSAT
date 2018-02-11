@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
+import { Result } from './result'
 
 @Injectable()
 export class ResultService {
 
-  psResults : any[];
+  psResults : Result[];
   satResults : any[];
 
   
