@@ -13,7 +13,6 @@ export class DictionaryComponent implements OnInit {
 
   constructor(private dictionaryService: DictionaryService) { 
     this.self = this;
-    // self.dictionarySerive = dictionaryService;
   }
 
   ngOnInit() {
@@ -29,12 +28,8 @@ export class DictionaryComponent implements OnInit {
   loadFromFile(elementName, onDataCallback) {
     this.file = (document.getElementById(elementName))["files"][0];
     var reader = new FileReader();
-    // reader.onloadend = function (e) {
-    //   onDataCallback(e.target.result);
-    //   this.$apply();
-    // };
     var fileReader = new FileReader();
-    //try to read file, this part does not work at all, need a solution
+
     fileReader.onload = onDataCallback;
     fileReader.readAsText(this.file);
   }

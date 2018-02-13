@@ -23,6 +23,9 @@ export class PcComponent implements OnInit {
   mainMatrix :number[][];
   matrixes : any[];
   comparisons : boolean = false;
+  error :string = "";
+  isError :boolean = false;
+
   constructor(public agentService: AgentService, private pcService: PcService, private resultService: ResultService) {
    
   }
@@ -36,6 +39,9 @@ export class PcComponent implements OnInit {
  
  
   finishComparisonType() :void {
+    this.checkIfAgentsExists();
+    if(!this.isError) {
+
     this.comparisons = true;
     this.lgOpen = false;
     this.lgOpen = true;
@@ -48,6 +54,7 @@ export class PcComponent implements OnInit {
 
     slider.oninput = function () {
       output.innerHTML = this.value;
+    }
     }
   }
 
@@ -146,19 +153,42 @@ export class PcComponent implements OnInit {
   showMatrixes() :void {
     console.log(this.mainMatrix);    
   }
+  
+  checkIfAgentsExists(): void {
+    if (!this.agentService.agents) {
+      this.error = "No agents specified!"
+      this.isError = true;
+    } else if(this.agentService.agents.length == 1) {
+      this.error = "Only one agent specified!"
+      this.isError = true;
+    }
+  }
 
   countAhp() :void {
+
+    this.checkIfAgentsExists();
+
+    if(!this.isError) {
     this.fillMatrices();
     this.resultService.psResults = [];
     this.pcService.ahp(this.mainMatrix, this.matrixes).subscribe(
       result => {
+        this.isError = false;
         result.values.forEach( (value, index) => {
           this.resultService.psResults.push(new Result(this.agentService.agents[index].name, value))          
-          // this.resultService.psResults = result.values,
         });
       }, 
-      error => console.log(error)
+      error => {
+        console.log(error)
+        this.error = error.message;
+        this.isError = true;
+      } 
     );
+    }
+  }
+
+  closeError() :void {
+    this.isError = false;
   }
 }
 

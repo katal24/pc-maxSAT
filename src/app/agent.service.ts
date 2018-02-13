@@ -10,9 +10,6 @@ import { Agent } from './agent';
 
   constructor() {
     this.attributes = [];
-    this.addAttributeByName("system");
-    this.addAttributeByName("szybkość");
-    this.addAttributeByName("zawodność");    
    }
 
   createAgents() :void {

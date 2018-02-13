@@ -11,7 +11,6 @@ export class AgentsComponent implements OnInit {
 
   attributes : string[];
   constructor(public agentService: AgentService ) { 
-    // this.addAttribute();
   }
 
   ngOnInit() {

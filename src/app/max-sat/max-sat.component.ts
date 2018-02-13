@@ -19,7 +19,8 @@ declare var $: any;
 export class MaxSatComponent implements OnInit {
 
   model : number[][][];
-  error : string = "";
+  error: string = "";
+  isError: boolean = false;
 
   constructor(public agentService: AgentService, private resultService: ResultService, private dictionaryService: DictionaryService, private maxsatService: MaxsatService) {
   }
@@ -52,6 +53,9 @@ export class MaxSatComponent implements OnInit {
           let clause = this.dictionaryService.dictionary.get(perfectValue);
           idealAgentModel = this.deleteItemFromArray(idealAgentModel, -clause);
           idealAgentModel.push(clause);
+        } else {
+          this.error = "No dictionary or ad value in ideal agent attributes!"
+          this.isError = true;
         }
       })
     })
@@ -62,6 +66,13 @@ export class MaxSatComponent implements OnInit {
 
   getKeysFromDictionary(): string[] {
     return Array.from(this.dictionaryService.dictionary.keys());
+  }
+
+  checkIfAgentsExists(): void {
+    if (!this.agentService.agents) {
+      this.error = "No agents specified!"
+      this.isError = true;
+    }
   }
 
   countAgentsModels(): number[][] {
@@ -75,22 +86,14 @@ export class MaxSatComponent implements OnInit {
         if (keys.indexOf(value) != -1) {
           let clause = this.dictionaryService.dictionary.get(value);
           agentsModels[index].push(clause);
+        } else {
+          this.error = "No dictionary ad value in agents' attributes!"
+          this.isError = true;
         }
       });
     });
 
     return agentsModels;
-    // this.agentService.attributes.forEach(attr => {
-    //   var keys = Array.from(this.dictionaryService.dictionary.keys());
-    //   if (keys.indexOf(attr.perfectValue) != -1) {
-    //     let clause = this.dictionaryService.dictionary.get(attr.perfectValue);
-    //     idealAgentModel = this.deleteItemFromArray(idealAgentModel, -clause);
-    //     idealAgentModel.push(clause);
-    //   }
-    // })
-
-    // console.log(idealAgentModel);
-    // return idealAgentModel;
   }
 
   countPerfectValues() :void {
@@ -100,6 +103,7 @@ export class MaxSatComponent implements OnInit {
   }
 
   countTheBest() {
+    this.checkIfAgentsExists();
     this.countPerfectValues();
     this.resultService.satResults = []
     
@@ -112,55 +116,27 @@ export class MaxSatComponent implements OnInit {
 
     var maxsatInput :number[][][] = [idealAgentModel, agentsModels];
 
+    if(!this.isError) {
 
-    this.maxsatService.maxsat(maxsatInput).subscribe(
-      result => {
-        result.values.forEach((value, index) => {
-          this.resultService.satResults.push(new Result(this.agentService.agents[index].name, value))
-        });
-      },
-      error => console.log(error)
-    );
+      this.maxsatService.maxsat(maxsatInput).subscribe(
+        result => {
+          this.isError = false;
+          result.values.forEach((value, index) => {
+            this.resultService.satResults.push(new Result(this.agentService.agents[index].name, value))
+          });
+        },
+        error => {
+          console.log(error)
+          this.error = error.message;
+          this.isError = true;
+        }
+      );
+    }
 
   }
 
-
-
-  // countTheBest(){
-  //   this.resultService.satResults = []
-
-  //   this.agentService.agents.forEach( (agent, index) => {
-  //     agent.values.forEach( (attributeValue, id) => {
-  //       let firstAttribute :Attribut = this.agentService.attributes[id];
-  //       if (firstAttribute.comparisonType[0]) {
-  //         if(this.checkSmaller(attributeValue, firstAttribute.perfectValue)){
-  //           agent.points++;
-  //         }
-  //       } else if (firstAttribute.comparisonType[1]) {
-  //         if(this.checkGreater(attributeValue, firstAttribute.perfectValue)){
-  //           agent.points++;
-  //         }
-  //       } else {
-  //         if(this.checkEquals(attributeValue, firstAttribute.perfectValue)){
-  //           agent.points++;
-  //         }
-  //       }
-  //     });
-  //     console.log(agent.name + ": " + agent.points);
-  //     this.resultService.satResults.push( new Result(agent.name, agent.points));
-  //   });
-  // }
-
-  checkSmaller(value1: any, value2: any) :boolean {
-    return +value1 < +value2;
-  }
-
-  checkGreater(value1: any, value2: any): boolean {
-    return +value1 > +value2;
-  }
-
-  checkEquals(value1: any, value2: any): boolean {
-    return value1 == value2;
+  closeError(): void {
+    this.isError = false;
   }
 
   ngOnInit() {
